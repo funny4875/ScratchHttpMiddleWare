@@ -1,0 +1,164 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="59:Y/LUN}U8~R@.@dPH/">i</variable>
+    <variable id="?_Za${RvM+lvYOw1H1:l">res</variable>
+    <variable id="`]yc[CSjH!8Bv-ho/)dZ">P</variable>
+    <variable id="TvSAqN_Xjei=-Jxq54RE">D6_</variable>
+  </variables>
+  <block type="board_initializes_setup" id="0" x="130" y="-90">
+    <field name="BOARD_TYPE">ESP8266</field>
+    <statement name="CONTENT">
+      <block type="serial_init" id="X,@p7~bJGND-*n.G5[r/">
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="linkit_wifi_wait_until_ready" id="l-Ke.LxZ-1WR6q`q7m#+">
+            <value name="SSID">
+              <block type="text" id="!V!P$jO)6.T=~naol:nq">
+                <field name="TEXT">此處輸入WIFI SSID</field>
+              </block>
+            </value>
+            <value name="PASSWORD">
+              <block type="text" id="(v4S$T=z2F?s2T$d?sov">
+                <field name="TEXT">此處輸入WIFI 密碼</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="variables_set" id="OxW.9c(qTX@z:!iqo$7s">
+        <field name="POSITION">global</field>
+        <field name="TYPE">String</field>
+        <field name="VAR" id="?_Za${RvM+lvYOw1H1:l">res</field>
+        <value name="VALUE">
+          <shadow type="math_number" id="%^{|RvYzlC]pfd,azHAi">
+            <field name="NUM">0</field>
+          </shadow>
+          <block type="text" id=",-I(,yX1;PxQuc{]mRKK">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="my~}CU{3[*(F!3N6IRoO">
+            <field name="POSITION">global</field>
+            <field name="TYPE">String</field>
+            <field name="VAR" id="`]yc[CSjH!8Bv-ho/)dZ">P</field>
+            <value name="VALUE">
+              <shadow type="math_number" id="!9+!4K_K5^#:w0~v*mUg">
+                <field name="NUM">0</field>
+              </shadow>
+              <block type="text" id="?PQcQQ0RbXc{Oh(O}t08">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="`)+CE{ek%]Y+dwhP9Pm/">
+                <field name="POSITION">global</field>
+                <field name="TYPE">int</field>
+                <field name="VAR" id="TvSAqN_Xjei=-Jxq54RE">D6_</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="[ew5H:7FoKOD[$@2:O%}">
+                    <field name="NUM">12</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="initializes_loop" id="1">
+                    <statement name="CONTENT">
+                      <block type="variables_set3" id="Ro?YhTwFB;.{0/sc@@ii">
+                        <field name="VAR" id="`]yc[CSjH!8Bv-ho/)dZ">P</field>
+                        <value name="DELTA">
+                          <shadow type="math_number" id="!k$lfVD4_.a;ZLJ_gKd^" disabled="true">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="text_join" id="by;:fly-el|ieWKV]P05">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="text" id="yNd1e8fwV%]]Fp?}-n!9">
+                                <field name="TEXT">/</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="cast_number" id="w6PN]]LdkB-V7dB[yhUu">
+                                <field name="TYPE">String(%1)</field>
+                                <value name="VAR">
+                                  <block type="inout_analog_read" id="|f|G6`G,(viE1A#V1oQO">
+                                    <field name="PIN">A0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set3" id="{M3l$,vI2(_e}W85)3^F">
+                            <field name="VAR" id="?_Za${RvM+lvYOw1H1:l">res</field>
+                            <value name="DELTA">
+                              <shadow type="math_number" id="HoC@x|.sm{Xc80X5qSav" disabled="true">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="tcp_https_esp32" id="eteQ3i`JId1=y2umy/M7">
+                                <field name="type">GET</field>
+                                <value name="domain">
+                                  <block type="text" id="wsUSOsHC8%-ja!g;f/+(">
+                                    <field name="TEXT">此處輸電腦端IP</field>
+                                  </block>
+                                </value>
+                                <value name="request">
+                                  <block type="variables_get" id="kVY41{}D}q2kcu2^`66L">
+                                    <field name="VAR" id="`]yc[CSjH!8Bv-ho/)dZ">P</field>
+                                  </block>
+                                </value>
+                                <value name="port">
+                                  <block type="math_number" id="u[*@6jfGFk2+WvCM.p:h">
+                                    <field name="NUM">443</field>
+                                  </block>
+                                </value>
+                                <value name="timeout">
+                                  <block type="math_number" id=",$@i6y@fGmqGG8PjDh4z">
+                                    <field name="NUM">1000</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="inout_custom_analog_write" id="d.]mbOL@.ak4+8zT(-QA">
+                                <value name="PIN_ANALOGWRITE">
+                                  <block type="variables_get" id="-)sbAP.5|wCm9lLlx-xU">
+                                    <field name="VAR" id="TvSAqN_Xjei=-Jxq54RE">D6_</field>
+                                  </block>
+                                </value>
+                                <value name="NUM">
+                                  <block type="cast_type1" id="6jPD{q`*-$|(5wQ`Fe=}">
+                                    <field name="TYPE">toInt()</field>
+                                    <value name="VAR">
+                                      <block type="variables_get" id="]I5%[fte^hzE3,LWfDFU">
+                                        <field name="VAR" id="?_Za${RvM+lvYOw1H1:l">res</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="text_append" id="wP6[EOr5T~C~J.x=g8?1" disabled="true" x="204" y="800">
+    <field name="VAR" id="59:Y/LUN}U8~R@.@dPH/">i</field>
+    <value name="TEXT">
+      <block type="text" id="1/^~E6a^Q|yw]N(v.lMa" disabled="true">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+</xml>
