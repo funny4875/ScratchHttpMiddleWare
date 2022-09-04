@@ -4,7 +4,7 @@ a simple scratchclient project communicate with nodemcu
 [![image](./img/youtube.jpg)](https://youtu.be/ga8hU_jUzjw)
 ![image](./img/Title.jpg)
 ### 在python中 使用 scratchclient 和 scratch3官網做各種互動
-本專案利用 「讀寫雲端變數」 之功能，將 序列埠/WIFI 接收到的訊號傳遞給 scratch3之專案,  
+本專案利用PC端 「讀寫雲端變數」 之功能，將 序列埠/WIFI 接收到的訊號傳遞給 scratch3之專案,  
 藉此可和 Arduino、nodeMCU 等開發板做互動。   
 - nodemcu：  
   - 輸出：  
